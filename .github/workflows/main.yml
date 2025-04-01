@@ -44,20 +44,20 @@ jobs:
               // Import Supabase client
               const { createClient } = require('@supabase/supabase-js');
               const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-              const supabase_v = createClient(process.env.SUPABASE_URL_v, process.env.SUPABASE_KEY_v);
+              
               
 
               // Ping Supabase by querying a table (e.g., 'songs')
               const { data, error } = await supabase.from('cooks').select('*').limit(10);
-              const { datav, errorv } = await supabase_v.from('drugs').select('*').limit(10);
+              
 
               // Handle errors
               if (error) throw error;
-              if (errorv) throw error;
+             
 
               // Log success
               console.log('Ping successful:', data);
-              console.log('Ping successful:', datav);
+       
             } catch (err) {
               // Log and exit with error
               console.error('Error pinging Supabase:', err.message);
